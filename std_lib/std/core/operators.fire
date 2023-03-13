@@ -1,0 +1,61 @@
+// Math operators
+trait Add<T, const O> {
+    fn add(self, T): O;
+}
+trait Subtract<T, const O> {
+    fn subtract(self, T): O;
+}
+trait Negate<const O> {
+    fn negate(self): O;
+}
+trait Multiply<T, const O> {
+    fn multiply(self, T): O;
+}
+trait Divide<T, const O> {
+    fn divide(self, T): O;
+}
+trait Modulo<T, const O> {
+    fn modulo(self, T): O;
+}
+// Boolean operators
+trait StrictAnd<T, const O> {
+    fn and(self, T): O;
+}
+trait And<T, const O> {
+    fn and(self, T): O;
+}
+trait StrictOr<T, const O> {
+    fn or(self, T): O;
+}
+trait Or<T, const O> {
+    fn or(self, T): O;
+}
+trait Not<const O> {
+    fn not(self): O;
+}
+trait Xor<T, const O> {
+    fn xor(self, T): O;
+}
+// Comparison operators
+trait Equal<const T> {
+    fn eq(self, T): Boolean;
+}
+trait Comparable<T, const O> : Equal<T, O> {
+    fn greater(self, T): O;
+    fn less(self, T): O;
+    fn greaterEqual(self, other: T): O {
+        return self.eq(other) || self.greater(other)
+    }
+    fn lessEqual(self, other: T): O {
+        return self.eq(other) || self.less(other)
+    }
+}
+// Accessing operators
+trait Accessible<T, const O> {
+    fn get(self, T): O;
+    fn set(self, T, O);
+}
+trait Container<T, const O> : Accessible<T, O> {
+    fn contains(self, T): Boolean;
+    fn remove(self, T);
+}

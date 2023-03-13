@@ -1,0 +1,29 @@
+@EventHandler
+pc main(e: PlayerJoinEvent) {
+    select(e.default);
+    sendMessage("Hello " & e.default & "!");
+}
+
+fn max(a: Comparable, b: Comparable) {
+    if (a.greater(b)) return a;
+    else return b;
+}
+
+trait Comparable {
+    fn greater(self, other: Self): Boolean;
+}
+
+struct Pair : Comparable {
+    a: Int,
+    b: Int
+
+    fn greater(self, other: Self): Boolean {
+        if (self.a > other.a) {
+            return true;
+        } else if (self.a == other.a) {
+            return self.b > self.a;
+        } else {
+            return false;
+        }
+    }
+}
